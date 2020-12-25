@@ -1,0 +1,54 @@
+<div class="fresh-hero">
+  <section class="container">
+  <h1>Live capital raises</h1>
+  <p>Indicate your interest in these offers:</p>
+  </section>
+</div>
+<main role="main" class="container">
+  <div class="inner-container">
+    <section class="body-content">
+      <div class="title-section left-align">
+        <h2>Placements</h2>
+      </div>
+      <div class="cards">
+        <%= for offer <- @offers do %>
+          <div class="card">
+            <div class="card-title">
+              <h3 class="bold"><%= offer.code %></h3>
+              <h2><%= offer.name %></h3>
+            </div>
+            <div class="card-body">
+              <div class="offer-card-row">
+                <div class="offer-card-content">
+                  <h6>Raising</h6>
+                  <h4><%= raising(offer) %></h4>
+                </div>
+                <div class="offer-card-content">
+                  <h6>Offer Price</h6>
+                  <h4><%= offer_price(offer) %></h4>
+                </div>
+              </div>
+              <div class="offer-card-row">
+                <div class="offer-card-content">
+                  <h6>Last Close Price</h6>
+                  <h4><%= last_close_price(offer) %></h4>
+                </div>
+                <div class="offer-card-content">
+                  <h6>Discount</h6>
+                  <h4><%= discount(offer) %></h4>
+                </div>
+              </div>
+              <div class="offer-card-row">
+                <h6><%= display_options(offer) %></h6>
+              </div>
+              <span><%= link "Place Bid", to: Routes.offer_bid_path(@conn, :new, offer.id), class: "button full-width" %></span>
+            </div>
+            <div class="card-footer">
+              <p class="next-step"><%= time_left(offer) %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </section>
+  </div>
+</main>

@@ -1,0 +1,21 @@
+<%# TODO - build bidding form with amount in shares here %>
+<label>
+  Your bid
+</label>
+
+<%= form_for @changeset, Routes.offer_bid_path(@conn, :create,@offer_id ), fn f -> %>
+<%= text_input f, :user_name, placeholder: "Your Name" %>
+<%= error_tag f, :user_name %>
+<%= text_input f, :user_email, placeholder: "Your Email" %>
+<%= error_tag f, :user_email %>
+<%= text_input f, :user_phone_number, placeholder: "Your Phone" %>
+<%= error_tag f, :user_phone_number %>
+<%= text_input f, :amount, placeholder: "amount" %>
+<%= error_tag f, :amount %>
+
+<p class="exceed-warning"><%= if @exceed, do: "Amount Exceed"  %></p>
+
+<%= submit "Submit" %>
+
+<% end %>
+

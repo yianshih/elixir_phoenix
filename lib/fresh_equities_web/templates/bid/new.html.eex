@@ -1,0 +1,61 @@
+<div class="fresh-hero grey">
+  <section class="container">
+    <h1>Bid for allocation</h1>
+    <p><%= @offer.code %> placement</p>
+  </section>
+</div>
+
+<main role="main" class="container">
+  <section class="body-content">
+    <div class="inner-container">
+      <div class="two-columns">
+        <div class="left-column">
+          <div class="card no-border no-margin">
+            <div class="card-title">
+              <h3 class="bold"><%= @offer.code %></h3>
+              <h2><%= @offer.name %></h3>
+            </div>
+            <div class="card-body">
+              <div class="offer-card-row">
+                <div class="offer-card-content">
+                  <h6>Raising</h6>
+                  <h4><%= raising(@offer) %></h4>
+                </div>
+                <div class="offer-card-content">
+                  <h6>Offer Price</h6>
+                  <h4><%= offer_price(@offer) %></h4>
+                </div>
+              </div>
+              <div class="offer-card-row">
+                <div class="offer-card-content">
+                  <h6>Last Close Price</h6>
+                  <h4><%= last_close_price(@offer) %></h4>
+                </div>
+                <div class="offer-card-content">
+                  <h6>Discount</h6>
+                  <h4><%= discount(@offer) %></h4>
+                </div>
+              </div>
+              <div class="offer-card-row">
+                <h6><%= display_options(@offer) %></h6>
+              </div>
+            </div>
+            <div class="card-footer">
+              <p class="next-step"><%= time_left(@offer) %></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-column">
+          <div class="card no-margin">
+            <%= render "form.html", Map.put(assigns, :action, Routes.offer_bid_path(@conn, :create, @offer_id)) %>
+            <div class="card-footer">
+              <p class="next-step">Receipt in next step</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
